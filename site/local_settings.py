@@ -21,7 +21,10 @@ DEBUG = (os.environ.get("DEBUG", "false").lower() == "true")  # Change to False 
 
 # Uncomment and set to the domain names this site is intended to serve.
 # You must do this once you set DEBUG to False.
-ALLOWED_HOSTS = [os.environ.get("SITE_HOST", "localhost")]
+ALLOWED_HOSTS = [
+    "localhost",
+    os.environ.get("SITE_HOST"),
+]
 
 # Optional apps that DMOJ can make use of.
 INSTALLED_APPS += (
