@@ -1,13 +1,14 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server pkg-config
+    apt-get install -y git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server pkg-config libmysqlclient-dev
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install nodejs && \
     npm install -g sass postcss-cli postcss autoprefixer
 
-RUN apt-get install -y libmysqlclient-dev
+RUN curl -sL https://r.mariadb.com/downloads/mariadb_repo_setup | bash - && \
+    apt-get install -y mariadb-client
 
 WORKDIR /
 RUN git clone https://github.com/DMOJ/site.git --recursive --depth 1
@@ -21,3 +22,5 @@ RUN ./make_style.sh
 RUN python3 manage.py collectstatic && \
     python3 manage.py compilemessages && \
     python3 manage.py compilejsi18n
+
+COPY startup.sh /startup.sh

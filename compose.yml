@@ -33,9 +33,7 @@ services:
     stdin_open: true
     env_file:
       - .env
-    volumes:
-      - './setup-db.sh:/setup-db.sh'
-    command: /setup-db.sh
+    command: /startup.sh
     ports:
       - 8000:8000
     healthcheck:
