@@ -1,10 +1,10 @@
-FROM ubuntu:24.04
+FROM python:3.11-slim
 
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y git gcc g++ make python3-dev python3-pip libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server pkg-config libmysqlclient-dev
+    apt-get install -y git gcc g++ make libxml2-dev libxslt1-dev zlib1g-dev gettext curl redis-server pkg-config default-libmysqlclient-dev
 
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install nodejs && \
+    apt-get install -y nodejs && \
     npm install -g sass postcss-cli postcss autoprefixer
 
 RUN curl -sL https://r.mariadb.com/downloads/mariadb_repo_setup | bash - && \
