@@ -1,0 +1,3 @@
+test_cases:
+- {in: case1.in, out: case1.out}
+points: 100
