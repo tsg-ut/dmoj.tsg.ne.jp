@@ -35,7 +35,7 @@ services:
       - .env
     command: /startup.sh
     ports:
-      - 8000:8000
+      - ${SITE_PORT}:8000
     healthcheck:
       test: ["CMD", "curl", "localhost:8000"]
       start_period: 5s
