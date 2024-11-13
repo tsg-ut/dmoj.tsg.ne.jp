@@ -1,4 +1,5 @@
 import os
+import random
 
 #####################################
 ########## Django settings ##########
@@ -13,7 +14,7 @@ import os
 # SECURITY WARNING: keep the secret key used in production secret!
 # You may use this command to generate a key:
 # python3 -c 'from django.core.management.utils import get_random_secret_key;print(get_random_secret_key())'
-SECRET_KEY = 'cp=v13-h!3m#_j$3df-92k+9r16^v@v5am^3)on!x6e-p#_9'
+SECRET_KEY = os.environ.get("SECRET_KEY", random.randbytes(64).hex())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get("DEBUG", "false").lower() == "true")  # Change to False once you are done with runserver testing.
