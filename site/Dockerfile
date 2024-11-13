@@ -24,3 +24,4 @@ RUN python3 manage.py collectstatic && \
     python3 manage.py compilejsi18n
 
 COPY startup.sh /startup.sh
+RUN chmod +x /startup.sh
